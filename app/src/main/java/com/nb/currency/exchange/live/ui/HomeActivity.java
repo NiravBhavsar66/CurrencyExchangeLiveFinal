@@ -101,6 +101,8 @@ public class HomeActivity extends AppCompatActivity implements ConnectivityRecei
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
+        Log.d("Github Update :", "this is to test the github vcs update");
+
         onCreateProcess();
         onIntializeProcess();
     }
