@@ -1,0 +1,71 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+apply plugin: 'com.android.application'
+
+
+android {
+    signingConfigs {
+        release {
+            keyAlias 'currency exchange'
+            keyPassword 'password'
+            storeFile file('C:/Users/Nirav/Desktop/cel1.1/Currency Exchange Live.jks')
+            storePassword 'password'
+        }
+    }
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.nb.currency.exchange.live"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 4
+        versionName "4.0"
+        multiDexEnabled true
+    }
+
+    dexOptions {
+        maxProcessCount 4 //This is the default value
+        javaMaxHeapSize "2g"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            ext.enableCrashlytics = true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.google.android.gms:play-services:10.2.0'
+    compile 'com.android.support:design:25.3.0'
+    compile 'com.jakewharton:butterknife:8.6.0'
+    compile 'com.android.support:multidex:1.0.1'
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    compile 'com.google.code.gson:gson:2.8.1'
+}
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}

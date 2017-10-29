@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2a9d42</color>
+    <color name="colorPrimaryDark">#036818</color>
+    <color name="colorAccent">#000000</color>
+    <color name="bg_home">#3a444e</color>
+    <color name="color_blue">#3387c8</color>
+    <color name="color_purple">#6c55aa</color>
+    <color name="color_coral_pink">#f8826f</color>
+    <color name="color_sea_green">#43a047</color>
+    <color name="color_sky_blue">#6a85ad</color>
+
+
+</resources>
