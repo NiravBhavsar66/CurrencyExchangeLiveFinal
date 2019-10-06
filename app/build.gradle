@@ -15,7 +15,7 @@ android {
         release {
             keyAlias 'currency exchange'
             keyPassword 'password'
-            storeFile file('C:/Users/Nirav/Desktop/cel1.1/Currency Exchange Live.jks')
+            storeFile file('D:\\AndroidWorkspace\\CurrencyExchangeLiveFinal\\app\\KeyStore\\Currency Exchange Live.jks')
             storePassword 'password'
         }
     }
@@ -24,8 +24,8 @@ android {
         applicationId "com.nb.currency.exchange.live"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 9
-        versionName "9.0"
+        versionCode 10
+        versionName "10.0"
         multiDexEnabled true
     }
     dexOptions {
