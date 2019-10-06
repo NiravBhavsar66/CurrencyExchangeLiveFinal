@@ -1,40 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_sky_blue">
 
-    <EditText
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edt_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/search_icon"
-        android:drawablePadding="@dimen/dimen_10"
-        android:gravity="left|center"
+        android:drawableStart="@drawable/search_icon"
+        android:drawablePadding="@dimen/_10sdp"
+        android:gravity="start|center"
         android:hint="@string/action_search"
+        android:maxLines="1"
         android:paddingBottom="@dimen/dimen_5"
-        android:paddingLeft="@dimen/dimen_10"
-        android:paddingTop="@dimen/dimen_5"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:singleLine="true"
+        ads:layout_constraintTop_toTopOf="parent"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
-        android:textSize="@dimen/text_size_20" />
+        android:textSize="@dimen/_12ssp" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recy_currency_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/adView"
-        android:layout_below="@+id/edt_search"
+        android:layout_height="0dp"
+        ads:layout_constraintTop_toBottomOf="@+id/edt_search"
+        ads:layout_constraintBottom_toBottomOf="parent"
         android:scrollbars="vertical" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 package com.nb.currency.exchange.live.currency;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +24,7 @@ public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapte
     private ArrayList<String> currencyList;
     private AdapterView.OnItemClickListener onItemClickListener;
     private AdapterView.OnItemLongClickListener onItemLongClickListener;
+    private ArrayList<Integer> mSectionPositions;
 
     public CurrencyListAdapter() {
     }
@@ -38,7 +39,7 @@ public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapte
         CurrencyListAdapter mAdapter;
 
         @BindView(R.id.tv_currency)
-        TextView tv_currency;
+        AppCompatTextView tv_currency;
 
         MyViewHolder(View view, CurrencyListAdapter mAdapter) {
             super(view);

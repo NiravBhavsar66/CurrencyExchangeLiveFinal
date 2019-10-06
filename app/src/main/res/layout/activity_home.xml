@@ -1,144 +1,135 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_home">
-    <ScrollView
+    android:background="@color/bg_home"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/adView"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/dimen_15"
-            android:paddingRight="@dimen/dimen_15">
-
-            <EditText
-                android:id="@+id/et_request_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:gravity="center"
-                android:hint="@string/hint_et_value"
-                android:inputType="numberDecimal"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:textSize="@dimen/text_size_15" />
-
-            <Button
-                android:id="@+id/btn_source_currency"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:background="@color/color_blue"
-                android:gravity="center"
-                android:hint="@string/text_select_country"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:textSize="@dimen/text_size_15" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:gravity="center"
-                android:text="@string/lbl_to"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/text_size_15" />
-
-            <Button
-                android:id="@+id/btn_destination_currency"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:background="@color/color_purple"
-                android:gravity="center"
-                android:hint="@string/text_select_country"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:textSize="@dimen/text_size_15" />
-
-
-            <Button
-                android:id="@+id/btn_reverse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:background="@color/color_coral_pink"
-                android:padding="@dimen/dimen_7"
-                android:text="@string/action_reverse"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/text_size_15" />
-
-            <Button
-                android:id="@+id/btn_convert"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_15"
-                android:background="@color/color_sea_green"
-                android:gravity="center"
-                android:text="@string/action_convert"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/text_size_15" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_20"
-                android:layout_marginBottom="@dimen/dimen_5"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_result_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:gravity="center"
-                    android:text="@string/txt_result_value"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_size_18" />
-
-                <ImageView
-                    android:id="@+id/img_share"
-                    android:layout_width="@dimen/dimen_25"
-                    android:layout_height="@dimen/dimen_25"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:visibility="gone"
-                    android:src="@drawable/share_icon" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/banner_ad"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_request_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id" />
+            android:layout_marginTop="@dimen/_75sdp"
+            android:gravity="center"
+            ads:layout_constraintTop_toTopOf="parent"
+            android:hint="@string/hint_et_value"
+            android:inputType="numberDecimal"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="@dimen/_15ssp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_source_currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:layout_constraintTop_toBottomOf="@+id/et_request_value"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@color/color_blue"
+            android:gravity="center"
+            android:hint="@string/text_select_country"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="@dimen/_12ssp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_to_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="@string/lbl_to"
+            ads:layout_constraintTop_toBottomOf="@+id/btn_source_currency"
+            ads:layout_constraintStart_toStartOf="parent"
+            ads:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_12ssp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_destination_currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/color_purple"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:hint="@string/text_select_country"
+            android:textColor="@android:color/white"
+            ads:layout_constraintTop_toBottomOf="@+id/tv_to_lbl"
+            android:textColorHint="@android:color/white"
+            android:textSize="@dimen/_12ssp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_reverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ads:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@color/color_coral_pink"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/action_reverse"
+            android:layout_marginEnd="@dimen/_15sdp"
+            ads:layout_constraintTop_toBottomOf="@+id/btn_destination_currency"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_10ssp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_convert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@color/color_sea_green"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            ads:layout_constraintTop_toBottomOf="@+id/btn_reverse"
+            android:text="@string/action_convert"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_12ssp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_result_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            ads:layout_constraintTop_toBottomOf="@+id/btn_convert"
+            android:text="@string/txt_result_value"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_15ssp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_share"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            ads:layout_constraintEnd_toEndOf="parent"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:padding="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            ads:layout_constraintTop_toBottomOf="@+id/btn_convert"
+            android:src="@drawable/share_icon" />
+
 
         <ProgressBar
             android:id="@+id/pg"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_centerInParent="true"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            ads:layout_constraintStart_toStartOf="parent"
+            ads:layout_constraintEnd_toEndOf="parent"
+            ads:layout_constraintTop_toBottomOf="@+id/btn_convert"
             android:visibility="gone" />
 
-    </RelativeLayout>
-    </ScrollView>
-</android.support.design.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

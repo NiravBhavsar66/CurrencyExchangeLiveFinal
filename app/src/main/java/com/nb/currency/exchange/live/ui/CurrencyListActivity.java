@@ -3,12 +3,14 @@ package com.nb.currency.exchange.live.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
@@ -16,10 +18,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 import com.nb.currency.exchange.live.R;
 import com.nb.currency.exchange.live.currency.CurrencyListAdapter;
 import com.nb.currency.exchange.live.utility.Constant;
@@ -37,20 +35,14 @@ import butterknife.ButterKnife;
 public class CurrencyListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     @BindView(R.id.edt_search)
-    EditText edt_search;
+    AppCompatEditText edt_search;
 
     @BindView(R.id.recy_currency_list)
     RecyclerView recy_currency_list;
 
-    @BindView(R.id.adView)
-    AdView adView;
-
     private CurrencyListAdapter currencyListAdapter;
 
     Intent i1;
-
-    private AdRequest adRequest;
-    private InterstitialAd interstitial;
 
     private ArrayList<String> currencyList = new ArrayList<>();
 
@@ -68,28 +60,12 @@ public class CurrencyListActivity extends AppCompatActivity implements AdapterVi
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-
         init();
 
     }
 
     private void init() {
         fillCurrencyList();
-
-        // Request for Ads
-        adRequest = new AdRequest.Builder()
-
-                // Add a test device to show Test Ads
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("XXXXXXXXXXXXXXXXXXXXXXXX")
-                .build();
-
-
-        adView.loadAd(adRequest);
-
-        // to avoid always showing of interstitial ad
-        if (randomString().equalsIgnoreCase("2") || randomString().equalsIgnoreCase("7") || randomString().equalsIgnoreCase("9"))
-            createInterstitialAd();
 
         setAdapter();
 
@@ -112,29 +88,6 @@ public class CurrencyListActivity extends AppCompatActivity implements AdapterVi
 
     }
 
-    private void createInterstitialAd() {
-        // Prepare the Interstitial Ad
-        interstitial = new InterstitialAd(CurrencyListActivity.this);
-        // Insert the Ad Unit ID
-        interstitial.setAdUnitId(getString(R.string.ad_unit_id));
-
-        interstitial.loadAd(adRequest);
-
-        // Prepare an Interstitial Ad Listener
-        interstitial.setAdListener(new AdListener() {
-            public void onAdLoaded() {
-                // Call displayInterstitial() function
-                displayInterstitial();
-            }
-        });
-    }
-
-    public void displayInterstitial() {
-        // If Ads are loaded, show Interstitial else show nothing.
-        if (interstitial.isLoaded()) {
-            interstitial.show();
-        }
-    }
 
     public void setAdapter() {
         if (currencyList != null && currencyList.size() > 0) {
@@ -160,7 +113,11 @@ public class CurrencyListActivity extends AppCompatActivity implements AdapterVi
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         i1 = new Intent(CurrencyListActivity.this, HomeActivity.class);
-        i1.putExtra(Constant.key_curr, ((AppCompatTextView) view).getText().toString().trim());
+//        i1.putExtra(Constant.key_curr, ((AppCompatTextView) view).getText().toString().trim());
+
+        AppCompatTextView card = (AppCompatTextView) ((CardView) view).getChildAt(0);
+        i1.putExtra(Constant.key_curr, card.getText().toString().trim());
+
         setResult(Activity.RESULT_OK, i1);
         finish();
     }
